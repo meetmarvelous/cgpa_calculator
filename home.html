@@ -190,15 +190,15 @@
         <p class="mb-0">Calculate your Cumulative Grade Point Average easily</p>
         <div class="grading-system-switcher mt-3">
           <div class="btn-group" role="group" aria-label="Grading System Selector">
-            <input type="radio" class="btn-check" name="grading-system" id="system-4" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="grading-system" id="system-4" autocomplete="off">
             <label class="btn btn-outline-light" for="system-4">4-Point System</label>
-            <input type="radio" class="btn-check" name="grading-system" id="system-5" autocomplete="off">
+            <input type="radio" class="btn-check" name="grading-system" id="system-5" autocomplete="off" checked>
             <label class="btn btn-outline-light" for="system-5">5-Point System</label>
             <input type="radio" class="btn-check" name="grading-system" id="system-7" autocomplete="off">
             <label class="btn btn-outline-light" for="system-7">7-Point System</label>
           </div>
           <div class="mt-2 text-white">
-            <span class="badge bg-white text-primary" id="current-system-badge">Current: 4-Point System</span>
+            <span class="badge bg-white text-primary" id="current-system-badge">Current: 5-Point System</span>
           </div>
         </div>
       </div>
@@ -279,7 +279,7 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="previous-cgpa" class="form-label">Previous CGPA</label>
-                  <input type="number" class="form-control" id="previous-cgpa" placeholder="e.g. 3.5" min="0" max="5"
+                  <input type="number" class="form-control" id="previous-cgpa" placeholder="e.g. 4.2" min="0" max="5"
                     step="0.01">
                 </div>
                 <div class="col-md-6">
@@ -600,8 +600,8 @@
       const advancedSection = document.getElementById('advanced-section');
 
       let courses = [];
-      let currentGradingSystem = '4-point';
-      let maxGradePoint = 4.0;
+      let currentGradingSystem = '5-point';
+      let maxGradePoint = 5.0;
 
       const gradingSystemsMap = {
         '4-point': {
@@ -827,7 +827,7 @@
             message = 'You need to work harder.';
           }
         }
-        else { // 5-point system
+        else { // 5-point system (default)
           if (cgpa >= 4.5) {
             classification = 'First Class Honours';
             message = 'Excellent! You\'re in First Class Honours territory.';
@@ -862,7 +862,6 @@
       }
 
       // Initialize
-      system4Radio.checked = true;
       updateGradeSelectOptions();
       updateButtonsState();
     });
